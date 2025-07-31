@@ -1,0 +1,48 @@
+<odoo>
+
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">student.tree</field>
+        <field name="model">student.manager</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="roll_number"/>
+                <field name="class_name" optional = "hide"/> <!--it hides the field from the tree untill it is changed from the custom fields-->
+                <field name="email" optional = "show"/><!--it shows y default-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">student.manager</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>     <!--to show the field names in the form -->
+                        <field name="name"/>
+                        <field name="roll_number"/>
+                        <field name="class_name"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">student.manager</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_student_root" name="Student Management"/>
+    <menuitem id="menu_student_main" name="Students" parent="menu_student_root"/>
+    <menuitem id="menu_student_items" name="Manage Students" parent="menu_student_main" action="action_student"/>
+    <menuitem id="menu_student_readonly" name="view Students" parent="menu_student_main" action="action_student_readonly"/>
+    <menuitem id="menu_student_id" name="Student IDs" parent="menu_student_main" action="action_student_id"/>
+</odoo>

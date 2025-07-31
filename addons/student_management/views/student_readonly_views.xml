@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="view_student_readonly_tree" model="ir.ui.view">
+        <field name="name">student.readonly.tree</field>
+        <field name="model">student.manager</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <tree string = "student" create = "0">
+                <field name="name"/>
+                <field name="roll_number"/>
+                <field name="class_name" optional = "hide"/> <!--it hides the field from the tree untill it is changed from the custom fields-->
+                <field name="email" optional = "show"/><!--it shows y default-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_student_readonly_form" model="ir.ui.view">
+        <field name="name">student.readonly.form</field>
+        <field name="model">student.manager</field>
+        <field name="arch" type="xml">
+            <form string = "student" create = "0">
+                <sheet>
+                    <group>     <!--to show the field names in the form -->
+                        <field name="name"/>
+                        <field name="roll_number"/>
+                        <field name="class_name"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_student_readonly" model="ir.actions.act_window">
+        <field name="name">View Students</field>
+        <field name="res_model">student.manager</field>
+        <field name="view_mode">tree,form</field>
+                <field name="view_ids" eval="[Command.clear(),
+                (0, 0, {'view_mode': 'tree',  'view_id': ref('view_student_readonly_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_student_readonly_form')})]"/>
+        <field name="view_id" ref="view_student_readonly_tree"/>
+    </record>
+</odoo>
