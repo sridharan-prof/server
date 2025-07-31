@@ -18,4 +18,8 @@ class StudentID(models.Model):
             if not vals.get('reference') or vals['reference'] == "New":
                 vals['reference'] = self.env['ir.sequence'].next_by_code('student.id') # ORM
         return super().create(vals_list)
+    
+    def confirm_action(self):
+        for rec in self:
+            print("button is clicked", rec, self)
  

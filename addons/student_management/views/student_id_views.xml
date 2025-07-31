@@ -19,6 +19,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name = "confirm_action" type = "object" string = "confirm" />
                     <field name = "status" widget = "statusbar" options = "{'clickable': '1'}" />
                 </header>
                 <sheet>
@@ -28,8 +29,10 @@
                         <field name="date"/>
                     </group>
                 </sheet>
-                <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                <field name="message_ids" widget="mail_thread"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
