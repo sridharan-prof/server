@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="seq_emplooyee_id" model="ir.sequence">
+            <field name="name">Employee ID Sequence</field>
+            <field name="code">employee.selfservice</field>
+            <field name="prefix">EID-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="employee_selfservice_view_tree" model="ir.ui.view">
+        <field name="name">employee.selfservice.tree</field>
+        <field name="model">employee.selfservice</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="employee_selfservice_view_form" model="ir.ui.view">
+        <field name="name">employee.selfservice.form</field>
+        <field name="model">employee.selfservice</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="reference" readonly="1"/>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

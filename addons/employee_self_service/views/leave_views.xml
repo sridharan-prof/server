@@ -1,0 +1,40 @@
+<odoo>
+
+    <!--Tree view-->
+    <record id="view_leave_request_tree" model="ir.ui.view">
+        <field name="name">leave.request.tree</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <tree string="Leave Requests">
+                <field name="employee_id"/>
+                <field name="leave_type"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Form view-->
+    <record id="view_leave_request_form" model="ir.ui.view">
+        <field name="name">leave.request.form</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <form string="Leave Request">
+                <header>
+                    <button name = "approve_action" type = "object" string = "approved" class = "oe_highlight"/>
+                    <button name = "rejected_action" type = "object" string = "rejected" class = "oe_highlight"/>
+                    <field name = "state" widget = "statusbar" options = "{'clickable': '1'}" />
+                </header>
+                <group>
+                    <field name="employee_id"/>
+                    <field name="leave_type"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="reason"/>
+                    <field name="state" readonly="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

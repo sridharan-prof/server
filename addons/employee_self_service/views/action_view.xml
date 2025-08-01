@@ -1,0 +1,32 @@
+<odoo>
+
+
+    <!--Employee Action -->
+    <record id="action_employee_selfservice" model="ir.actions.act_window">
+        <field name="name">Employee Self Service</field>
+        <field name="res_model">employee.selfservice</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--Attendance Action -->
+    <record id="action_employee_attendance" model="ir.actions.act_window">
+        <field name="name">Employee attendance</field>
+        <field name="res_model">employee.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--Attendance Action -->
+    <record id="action_employee_info" model="ir.actions.act_window">
+        <field name="name">Employee info</field>
+        <field name="res_model">info.update.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--Attendance Action -->
+    <record id="action_employee_leave" model="ir.actions.act_window">
+        <field name="name">Leave status</field>
+        <field name="res_model">leave.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

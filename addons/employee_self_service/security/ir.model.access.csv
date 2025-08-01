@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id,perm_read,perm_write,perm_create,perm_unlink
+employee_id,employee_service,model_employee_selfservice,,1,1,1,1
+attendance_id,employee_attendance,model_employee_attendance,,1,1,1,1
+info_id,employee_info,model_info_update_request,,1,1,1,1
+leave_id,employee_leave,model_leave_request,,1,1,1,1
+payslip_id,employee_payslip,model_employee_payslip,,1,1,1,1

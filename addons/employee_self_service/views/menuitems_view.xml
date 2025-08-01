@@ -1,0 +1,19 @@
+<odoo>
+
+    <!--Employees Menu Items -->
+    <menuitem id="menu_employee_root" name="Employee Service" sequence="10"/>
+    <menuitem id="menu_employee_selfservice" name="Self Service" parent="menu_employee_root" action="action_employee_selfservice" sequence="1"/>
+
+    <!--Attendance Menu Items -->
+    <menuitem id="menu_employee_attendance" name="Employee attendance" sequence="11"/>
+    <menuitem id="menu_employee_attendance" name="Attendance" parent="menu_employee_root" action="action_employee_attendance" sequence="1"/>
+
+    <!--Info Menu Items -->
+    <menuitem id="menu_employee_info" name="Employee information" sequence="13"/>
+    <menuitem id="menu_employee_info" name="Employee information" parent="menu_employee_root" action="action_employee_info" sequence="1"/>
+
+    <!--Info Menu Items -->
+    <menuitem id="menu_leave_report" name="Employee leave" sequence="12"/>
+    <menuitem id="menu_leave_report" name="Employee leave" parent="menu_employee_root" action="action_employee_leave" sequence="1"/>
+
+</odoo>

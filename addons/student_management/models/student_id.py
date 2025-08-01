@@ -21,5 +21,6 @@ class StudentID(models.Model):
     
     def confirm_action(self):
         for rec in self:
+            rec.status = 'submitted'
             print("button is clicked", rec, self)
  
