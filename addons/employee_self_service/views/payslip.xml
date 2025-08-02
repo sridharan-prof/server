@@ -1,0 +1,39 @@
+<odoo>
+
+
+    <!--Tree view-->
+    <record id = "employee_payslip_view_tress" model = "ir.ui.view">
+        <field name = "name">employee.payslip.tree</field>
+        <field name = "name">employee.payslip</field>
+        <field name = "arch" type = "xml">
+            <tree>
+                <field name = "employee_id" />
+                <field name = "paymonth_slip" />
+                <field name = "gross_salary" />
+                <field name = "deduction" />
+                <field name = "net_salary" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Form view-->
+    <record id = "employee_payslip_view_form" model = "ir.ui.view">
+        <field name = "name">employee.payslip.form</field>
+        <field name = "name">employee.payslip</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name = "employee_id" />
+                        <field name = "paymonth_slip" />
+                        <field name = "gross_salary" />
+                        <field name = "deduction" />
+                        <field name = "net_salary" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

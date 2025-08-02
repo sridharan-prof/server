@@ -29,4 +29,12 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!--Payslip Action -->
+    <record id="action_employee_payslip" model="ir.actions.act_window">
+        <field name="name">Employee payslip</field>
+        <field name="res_model">employee.payslip</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
 </odoo>

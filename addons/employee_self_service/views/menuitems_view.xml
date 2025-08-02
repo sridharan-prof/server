@@ -8,12 +8,17 @@
     <menuitem id="menu_employee_attendance" name="Employee attendance" sequence="11"/>
     <menuitem id="menu_employee_attendance" name="Attendance" parent="menu_employee_root" action="action_employee_attendance" sequence="1"/>
 
+    <!--Leave Menu Items -->
+    <menuitem id="menu_leave_report" name="Employee leave" sequence="12"/>
+    <menuitem id="menu_leave_report" name="Employee leave" parent="menu_employee_root" action="action_employee_leave" sequence="1"/>
+
     <!--Info Menu Items -->
     <menuitem id="menu_employee_info" name="Employee information" sequence="13"/>
     <menuitem id="menu_employee_info" name="Employee information" parent="menu_employee_root" action="action_employee_info" sequence="1"/>
 
-    <!--Info Menu Items -->
-    <menuitem id="menu_leave_report" name="Employee leave" sequence="12"/>
-    <menuitem id="menu_leave_report" name="Employee leave" parent="menu_employee_root" action="action_employee_leave" sequence="1"/>
+    <!--Payslip Menu Items -->
+    <menuitem id="menu_employee_payslip" name="Payslip" sequence="14"/>
+    <menuitem id="menu_employee_payslip" name="Payslip" parent="menu_employee_root" action="action_employee_payslip" sequence="1"/>
+
 
 </odoo>
