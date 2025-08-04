@@ -1,4 +1,6 @@
 <odoo>
+
+
     <!-- Tree view -->
     <record id="employee_ticket_view_tree" model="ir.ui.view">
         <field name="name">employee.ticket.tree</field>
