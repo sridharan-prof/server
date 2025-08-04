@@ -4,3 +4,6 @@ attendance_id,employee_attendance,model_employee_attendance,,1,1,1,1
 info_id,employee_info,model_info_update_request,,1,1,1,1
 leave_id,employee_leave,model_leave_request,,1,1,1,1
 payslip_id,employee_payslip,model_employee_payslip,,1,1,1,1
+appraisal_id,employee_appraisal,model_employee_appraisal,,1,1,1,1
+employee_ticket_id,employee_ticket,model_employee_ticket,,1,1,1,0
+employee_feedback_id,employee_feedback,model_employee_feedback,,1,1,1,0

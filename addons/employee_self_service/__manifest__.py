@@ -7,16 +7,20 @@
     'description': 'Employee self service',
     'data': [
         'security/ir.model.access.csv',
+        'views/employee_feedback.xml',
+        'views/employee_ticket.xml',
+        'views/self_appraisal.xml',
         'views/action_view.xml',
         'views/menuitems_view.xml',
+        # 'data/email_templates.xml',
         'data/sequence.xml',
         'views/info_view.xml',
-        # 'views/payslip.xml',
+        'views/payslip.xml',
         'views/leave_views.xml',
         'views/attendance.xml',
         'views/employee_views.xml',
     ],
-
+    'images' : ['static/description/icon.png'], 
     'installable': True,
     'application': True,
 }

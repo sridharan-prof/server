@@ -1,0 +1,40 @@
+<odoo>
+
+    <!--Tree view-->
+    <record id = "employee_self_appraisal_view_tree" model = "ir.ui.view">
+        <field name = "name">employee.appraisal.tree</field>
+        <field name = "model">employee.appraisal</field>
+        <field name = "arch" type = "xml">
+            <tree>
+                <field name = "employee_id" />
+                <field name = "appraisal_date" />
+                <field name = "strengths" />
+                <field name = "improvements" />
+                <field name = "manager_feedback" />
+                <field name = "state" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Form view-->
+    <record id = "employee_appraisal_view_form" model = "ir.ui.view">
+        <field name = "name">employee.appraisal.form</field>
+        <field name = "model">employee.appraisal</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name = "employee_id" />
+                        <field name = "appraisal_date" />
+                        <field name = "strengths" />
+                        <field name = "improvements" />
+                        <field name = "manager_feedback" />
+                        <field name = "state" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

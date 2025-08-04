@@ -36,5 +36,25 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!--Appraisal Action-->
+    <record id = "action_employee_self_appraisal" model = "ir.actions.act_window">
+        <field name = "name">Employee Appraisal</field>
+        <field name = "res_model">employee.appraisal</field>
+        <field name = "view_mode">tree,form</field>
+    </record>
+
+    <!--Ticket submission Action-->
+    <record id = "action_employee_ticket_submission" model = "ir.actions.act_window">
+        <field name = "name">Employee Ticket Submission</field>
+        <field name = "res_model">employee.ticket</field>
+        <field name = "view_mode">tree,form</field>
+    </record>
+
+    <!--Feedback Action-->
+    <record id = "action_employee_feedback" model = "ir.actions.act_window">
+        <field name = "name">Employee feedback</field>
+        <field name = "res_model">employee.feedback</field>
+        <field name = "view_mode">tree,form</field>
+    </record>
 
 </odoo>
