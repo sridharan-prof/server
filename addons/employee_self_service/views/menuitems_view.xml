@@ -1,32 +1,50 @@
 <odoo>
 
-    <!--Employees Menu Items -->
-    <menuitem id="menu_employee_root" name="Employee Service" sequence="1" web_icon="addons/employee_self_service/static/description/icon.png"/>
-    <menuitem id="menu_employee_selfservice" name="Self Service" parent="menu_employee_root" action="action_employee_selfservice" sequence="1"/>
+    <!-- Root Menu -->
+    <menuitem id="menu_employee_root" name="Employee Service" sequence="1"
+              web_icon="addons/employee_self_service/static/description/icon.png"/>
 
-    <!--Attendance and Employee-->
-    <menuitem id = "menu_employee_subroot_attendance" name = "attendance and leave status" parent="menu_employee_root" sequence = '2' />
-    <menuitem id="menu_employee_attendance" name="Attendance" parent="menu_employee_subroot_attendance" action="action_employee_attendance" sequence="1"/>
-    <menuitem id="menu_leave_report" name="Leave status" parent="menu_employee_subroot_attendance" action="action_employee_leave" sequence="2"/>
+    <!-- Self Service -->
+    <menuitem id="menu_employee_self_service" name="Self Service"
+              parent="menu_employee_root" action="action_employee_selfservice" sequence="1"/>
 
-    <!--Info Menu Items -->
-    <menuitem id="menu_employee_info" name="Employee information" sequence="5"/>
-    <menuitem id="menu_employee_info" name="Employee information" parent="menu_employee_root" action="action_employee_info" sequence="1"/>
+    <!-- Attendance and Leave -->
+    <menuitem id="menu_employee_subroot_attendance" name="Attendance and Leave"
+              parent="menu_employee_root" sequence="2"/>
+    <menuitem id="menu_employee_attendance" name="Attendance"
+              parent="menu_employee_subroot_attendance" action="action_employee_attendance" sequence="1"/>
+    <menuitem id="menu_employee_leave_status" name="Leave Status"
+              parent="menu_employee_subroot_attendance" action="action_employee_leave" sequence="2"/>
 
-    <!--Payslip Menu Items -->
-    <menuitem id="menu_employee_payslip" name="Payslip" sequence="10"/>
-    <menuitem id="menu_employee_payslip" name="Payslip" parent="menu_employee_root" action="action_employee_payslip" sequence="1"/>
+    <!-- Employee Info -->
+    <menuitem id="menu_employee_info_root" name="Employee Info"
+              parent="menu_employee_root" sequence="3"/>
+    <menuitem id="menu_employee_info_view" name="Employee Information"
+              parent="menu_employee_info_root" action="action_employee_info" sequence="1"/>
 
-    <!--Appraisal Menu Items-->
-    <menuitem id = "menu_employee_appraisal" name = "appraisal" sequence = "9" />
-    <menuitem id = "menu_employee_appraisal" name = "appraisal" parent = "menu_employee_root" action = "action_employee_self_appraisal" sequence = "1" />
+    <!-- Payslip -->
+    <menuitem id="menu_employee_payslip_root" name="Payslip"
+              parent="menu_employee_root" sequence="4"/>
+    <menuitem id="menu_employee_payslip_view" name="View Payslip"
+              parent="menu_employee_payslip_root" action="action_employee_payslip" sequence="1"/>
 
-    <!--Ticket submission Menu Items-->
-    <menuitem id = "menu_employee_ticket_submission" name = "Ticket" sequence = "11" />
-    <menuitem id = "menu_employee_ticket_submission" name = "Ticket" parent = "menu_employee_root" action = "action_employee_ticket_submission" sequence = "1" />
- 
-    <!--feedback Menu Items-->
-    <menuitem id = "menu_employee_feedback" name = "Feedback" sequence = "12" />
-    <menuitem id = "menu_employee_feedback" name = "Feedback" parent = "menu_employee_root" action = "action_employee_feedback" sequence = "1" />
+    <!-- Appraisal -->
+    <menuitem id="menu_employee_appraisal_root" name="Appraisal"
+              parent="menu_employee_root" sequence="5"/>
+    <menuitem id="menu_employee_appraisal_view" name="Self Appraisal"
+              parent="menu_employee_appraisal_root" action="action_employee_self_appraisal" sequence="1"/>
+
+    <!-- Ticket Submission -->
+    <menuitem id="menu_employee_ticket_root" name="Ticket"
+              parent="menu_employee_root" sequence="6"/>
+    <menuitem id="menu_employee_ticket_view" name="Submit Ticket"
+              parent="menu_employee_ticket_root" action="action_employee_ticket_submission" sequence="1"/>
+
+    <!-- Feedback -->
+    <menuitem id="menu_employee_feedback_root" name="Feedback"
+              parent="menu_employee_root" sequence="7"/>
+    <menuitem id="menu_employee_feedback_view" name="Give Feedback"
+              parent="menu_employee_feedback_root" action="action_employee_feedback" sequence="1"/>
+
 
 </odoo>

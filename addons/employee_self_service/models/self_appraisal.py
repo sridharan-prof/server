@@ -1,15 +1,16 @@
-from odoo import fields, models, api
+from odoo import fields, models
 
-class self_appraisal(models.Model):
+class EmployeeAppraisal(models.Model):
     _name = "employee.appraisal"
-    _description = "employee self appraisal"
+    _description = "Employee Self Appraisal"
     _rec_name = "employee_id"
 
-    employee_id = fields.Many2one('employee.selfservice', string = "employee")
+    employee_id = fields.Many2one('employee.selfservice', string="Employee", required=True)
     appraisal_date = fields.Date(string='Appraisal Date', default=fields.Date.today)
     strengths = fields.Text(string='Strengths')
     improvements = fields.Text(string='Areas for Improvement')
     manager_feedback = fields.Text(string='Manager Feedback')
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('reviewed', 'Reviewed'),
@@ -17,9 +18,7 @@ class self_appraisal(models.Model):
     ], default='draft')
 
     def action_review(self):
-        for rec in self:
-            rec.state = 'reviewed'
+        self.write({'state': 'reviewed'})
 
     def action_finalize(self):
-        for rec in self:
-            rec.state = 'finalized'
+        self.write({'state': 'finalized'})

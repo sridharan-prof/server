@@ -8,7 +8,7 @@
                 <field name="employee_id"/>
                 <field name="check_in"/>
                 <field name="check_out"/>
-                <field name="total_hours"/>
+                <field name="duration"/>
             </tree>
         </field>
     </record>
@@ -24,7 +24,7 @@
                         <field name="employee_id"/>
                         <field name="check_in"/>
                         <field name="check_out"/>
-                        <field name="total_hours"/>
+                        <field name="duration"/>
                     </group>
                 </sheet>
             </form>

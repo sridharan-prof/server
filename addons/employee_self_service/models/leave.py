@@ -1,22 +1,20 @@
-from odoo import models, fields, api
+from odoo import models, fields
 
 class LeaveRequest(models.Model):
     _name = 'leave.request'
     _description = 'Leave Request'
     _rec_name = 'employee_id'
 
-    employee_id = fields.Many2one('employee.selfservice', string='employee')
+    employee_id = fields.Many2one('employee.selfservice', string='Employee')
     leave_type = fields.Selection([
         ('sick', 'Sick Leave'),
         ('casual', 'Casual Leave'),
         ('earned', 'Earned Leave'),
         ('unpaid', 'Unpaid Leave'),
-    ], string='Leave Type', default = 'sick')
-    
+    ], string='Leave Type', default='sick')
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
     reason = fields.Text(string='Reason')
-    
     state = fields.Selection([
         ('draft', 'Draft'),
         ('approved', 'Approved'),
@@ -24,9 +22,7 @@ class LeaveRequest(models.Model):
     ], string='Status', default='draft')
 
     def approve_action(self):
-        for rec in self:
-            rec.state = 'approved'
-    
+        self.write({'state': 'approved'})
+
     def rejected_action(self):
-        for record in self:
-            record.state = "rejected"
+        self.write({'state': 'rejected'})
