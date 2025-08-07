@@ -1,7 +1,7 @@
 <odoo>
 
     <!--Tree view-->
-    <record id = "employee_self_appraisal_view_tree" model = "ir.ui.view">
+    <record id = "view_employee_self_appraisal_tree" model = "ir.ui.view">
         <field name = "name">employee.appraisal.tree</field>
         <field name = "model">employee.appraisal</field>
         <field name = "arch" type = "xml">
@@ -17,7 +17,7 @@
     </record>
 
     <!--Form view-->
-    <record id = "employee_appraisal_view_form" model = "ir.ui.view">
+    <record id = "view_employee_appraisal_form" model = "ir.ui.view">
         <field name = "name">employee.appraisal.form</field>
         <field name = "model">employee.appraisal</field>
         <field name = "arch" type = "xml">

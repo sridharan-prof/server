@@ -2,7 +2,7 @@
 
 
     <!-- Tree view -->
-    <record id="employee_ticket_view_tree" model="ir.ui.view">
+    <record id="view_employee_ticket_tree" model="ir.ui.view">
         <field name="name">employee.ticket.tree</field>
         <field name="model">employee.ticket</field>
         <field name="arch" type="xml">
@@ -19,7 +19,7 @@
     </record>
 
     <!-- Form view -->
-    <record id="employee_ticket_view_form" model="ir.ui.view">
+    <record id="view_employee_ticket_form" model="ir.ui.view">
         <field name="name">employee.ticket.form</field>
         <field name="model">employee.ticket</field>
         <field name="arch" type="xml">
@@ -35,6 +35,10 @@
                         <field name="state"/>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

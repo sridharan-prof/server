@@ -20,6 +20,11 @@
         'views/attendance.xml',
         'views/employee_views.xml',
     ],
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'employee_self_service/static/src/css/custom_style.css',
+    #     ],
+    # },
     'images' : ['static/description/icon.png'], 
     'installable': True,
     'application': True,

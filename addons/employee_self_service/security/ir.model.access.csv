@@ -7,3 +7,5 @@ payslip_id,employee_payslip,model_employee_payslip,,1,1,1,1
 appraisal_id,employee_appraisal,model_employee_appraisal,,1,1,1,1
 employee_ticket_id,employee_ticket,model_employee_ticket,,1,1,1,0
 employee_feedback_id,employee_feedback,model_employee_feedback,,1,1,1,0
+mail_message_access,mail_message,mail.model_mail_message,,1,0,0,0
+mail_activity_access,mail_activity,mail.model_mail_activity,,1,1,1,1

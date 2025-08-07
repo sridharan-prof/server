@@ -4,7 +4,8 @@ class EmployeePayslip(models.Model):
     _name = "employee.payslip"
     _description = "Employee Payslip"
     _rec_name = 'employee_id'
-
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    
     employee_id = fields.Many2one('hr.employee', string='Employee', required=True)
     paymonth_slip = fields.Date(string="Payslip Date", required=True)
     gross_salary = fields.Float(string='Gross Salary', required=True)

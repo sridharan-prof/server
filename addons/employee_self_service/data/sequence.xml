@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+    <data noupdate = "1">
         <record id="seq_emplooyee_id" model="ir.sequence">
             <field name="name">Employee ID Sequence</field>
             <field name="code">employee.selfservice</field>

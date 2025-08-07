@@ -5,7 +5,7 @@
     <record id="action_employee_selfservice" model="ir.actions.act_window">
         <field name="name">Employee Self Service</field>
         <field name="res_model">employee.selfservice</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <!--Attendance Action -->

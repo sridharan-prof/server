@@ -1,31 +1,156 @@
 <odoo>
     <!-- Tree View -->
-    <record id="employee_selfservice_view_tree" model="ir.ui.view">
+    <record id="view_employee_selfservice_tree" model="ir.ui.view">
         <field name="name">employee.selfservice.tree</field>
         <field name="model">employee.selfservice</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="reference"/>
-                <field name="name"/>
+                <field name="employee_id"/>
                 <field name="department_id"/>
+                <field name="job_position" /> 
+                <field name="work_mobile" /> 
+                <field name="work_mail" /> 
+                <field name = "image" optional = "hide"/>
             </tree>
         </field>
     </record>
 
     <!-- Form View -->
-    <record id="employee_selfservice_view_form" model="ir.ui.view">
+    <record id="view_employee_selfservice_form" model="ir.ui.view">
         <field name="name">employee.selfservice.form</field>
         <field name="model">employee.selfservice</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Employee Self Service" class="o_form" create="true" edit="true">
                 <sheet>
+                    <div class="position-relative">
+                        <div class="row">
+                            <div name="oe_title" class="col mb-3">
+                                <h1>
+                                    <field name="employee_id"/>
+                                </h1>
+                                <h2>
+                                    <field name="job_position" placeholder="Job Position" style="font-size: min(2vw, 2.6rem);"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="custom-avatar" style="position: absolute; top: 0; right: 0; padding: 10px;">
+                            <field name="image"
+                                widget="image"
+                                class="rounded-circle"
+                                style="width: 80px; height: 80px;"
+                                options="{'preview_image': 'image_128'}"/>
+                        </div>
+                    </div>
                     <group>
-                        <field name="reference" readonly="1"/>
-                        <field name="name"/>
-                        <field name="department_id"/>
+                        <group>
+                            <field name="reference" readonly="1"/>
+                            <field name = "work_mobile" />
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name = "work_mail" />
+                        </group>
                     </group>
+
+                    <notebook>
+                        <page name = "work-info" string = "Work Information">
+                            <group string = "LOCATION">
+                                <field name = "work_address" />
+                                <field name = "work_location" />
+                            </group>
+                            <group string = "SCHEDULE">
+                                <field name = "working_hours" />
+                                <field name = "timezone" />
+                            </group>
+                        </page>
+
+                        <page name = "personal info" string = "Personal Information">
+                            <sheet>
+                                <group>
+                                    <group string = "PRIVATE CONTACT">
+                                        <field name = "email" />
+                                        <field name = "phone" />
+                                        <field name = "language" />
+                                    </group>
+                                    <group string = "FAMILY STATUS">
+                                        <field name = "martial_status" />
+                                    </group>
+                                </group>
+
+                                <group>
+                                    <group string = "EMERGENCY CONTACT">
+                                        <field name = "contact_name" />
+                                        <field name = "contact_number" />
+                                    </group>
+                                    <group string = "EDUCATION">
+                                        <field name = "certificate_level" />
+                                        <field name = "field_of_study" />
+                                        <field name = "school" />
+                                    </group>
+                                </group>
+                            </sheet>
+                        </page>
+                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
+
+    <!--Kanban list-->
+    <record id="view_employee_selfservice_kanban" model="ir.ui.view">
+        <field name="name">employee.selfservice.kanban</field>
+        <field name="model">employee.selfservice</field>
+        <field name="arch" type="xml">
+            <kanban class="o_employee_selfservice_kanban">
+                <field name="reference"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_employee_selfservice_card">
+
+                            <div class="o_kanban_image_fill_left d-flex align-items-center justify-content-center bg-100 bg-gradient">
+                                <t t-if="record.employee_id.raw_value">
+                                    <img t-att-src="'/web/image/hr.employee/' + record.employee_id.raw_value + '/image_128'"
+                                        class="img img-fluid square" style="width: 100px; height: 95px; object-fit: cover;"/>
+                                </t>
+                                <t t-else="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-75 h-75 opacity-50" viewBox="0 0 20 20">
+                                        <g fill="currentColor">
+                                            <path d="M 10 11 C 4.08 11 2 14 2 16 L 2 19 L 18 19 L 18 16 C 18 14 15.92 11 10 11 Z"/>
+                                            <circle cx="10" cy="5.5" r="4.5"/>
+                                        </g>
+                                    </svg>
+                                </t>
+                            </div>
+                            <div class="oe_kanban_details ps-2 pt-2">
+                                <div class="fw-bold fs-6 text-dark mb-1">
+                                    <t t-esc="record.employee_id.value"/>
+                                </div>
+                                <div class="text-muted mb-1">
+                                    <t t-if="record.department_id">
+                                        <i class="fa fa-building me-1 text-primary"/> 
+                                        <t t-esc="record.department_id.value"/>
+                                    </t>
+                                </div>
+                                <div class="text-muted">
+                                    <t t-if="record.reference">
+                                        <i class="fa fa-id-card me-1 text-primary"/>
+                                        <strong>Ref:</strong> <t t-esc="record.reference.value"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 </odoo>

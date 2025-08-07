@@ -8,8 +8,8 @@
             <tree string = "student" create = "0">
                 <field name="name"/>
                 <field name="roll_number"/>
-                <field name="class_name" optional = "hide"/> <!--it hides the field from the tree untill it is changed from the custom fields-->
-                <field name="email" optional = "show"/><!--it shows y default-->
+                <field name="class_name" optional = "hide"/> 
+                <field name="email" optional = "show"/>
             </tree>
         </field>
     </record>
@@ -20,7 +20,7 @@
         <field name="arch" type="xml">
             <form string = "student" create = "0">
                 <sheet>
-                    <group>     <!--to show the field names in the form -->
+                    <group> <!--to show the field names in the form -->
                         <field name="name"/>
                         <field name="roll_number"/>
                         <field name="class_name"/>

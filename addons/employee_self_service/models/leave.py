@@ -4,6 +4,7 @@ class LeaveRequest(models.Model):
     _name = 'leave.request'
     _description = 'Leave Request'
     _rec_name = 'employee_id'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     employee_id = fields.Many2one('employee.selfservice', string='Employee')
     leave_type = fields.Selection([
