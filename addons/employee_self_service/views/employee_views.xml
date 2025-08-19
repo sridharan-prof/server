@@ -5,12 +5,12 @@
         <field name="model">employee.selfservice</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="reference"/>
-                <field name="employee_id"/>
-                <field name="department_id"/>
-                <field name="job_position" /> 
-                <field name="work_mobile" /> 
-                <field name="work_mail" /> 
+                <field name = "reference"/>
+                <field name = "employee_id"/>
+                <field name = "department_id"/>
+                <field name = "job_position" /> 
+                <field name = "work_mobile" /> 
+                <field name = "work_mail" /> 
                 <field name = "image" optional = "hide"/>
             </tree>
         </field>
@@ -21,7 +21,10 @@
         <field name="name">employee.selfservice.form</field>
         <field name="model">employee.selfservice</field>
         <field name="arch" type="xml">
-            <form string="Employee Self Service" class="o_form" create="true" edit="true">
+            <form string="Employee Self Service" class="o_form" edit="true">
+                <header>
+                    <button name = "print_report" type = "object" string = "print" class = "oe_highlight" />
+                </header>
                 <sheet>
                     <div class="position-relative">
                         <div class="row">
@@ -32,6 +35,9 @@
                                 <h2>
                                     <field name="job_position" placeholder="Job Position" style="font-size: min(2vw, 2.6rem);"/>
                                 </h2>
+                                <group>
+                                    <field name = "skills" widget = "many2many_tags" />
+                                </group>
                             </div>
                         </div>
                         <div class="custom-avatar" style="position: absolute; top: 0; right: 0; padding: 10px;">
@@ -39,7 +45,7 @@
                                 widget="image"
                                 class="rounded-circle"
                                 style="width: 80px; height: 80px;"
-                                options="{'preview_image': 'image_128'}"/>
+                                options="{'preview_image': 'image'}"/>
                         </div>
                     </div>
                     <group>
@@ -110,7 +116,6 @@
                 <field name="reference"/>
                 <field name="employee_id"/>
                 <field name="department_id"/>
-
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_employee_selfservice_card">
@@ -118,15 +123,7 @@
                             <div class="o_kanban_image_fill_left d-flex align-items-center justify-content-center bg-100 bg-gradient">
                                 <t t-if="record.employee_id.raw_value">
                                     <img t-att-src="'/web/image/hr.employee/' + record.employee_id.raw_value + '/image_128'"
-                                        class="img img-fluid square" style="width: 100px; height: 95px; object-fit: cover;"/>
-                                </t>
-                                <t t-else="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-75 h-75 opacity-50" viewBox="0 0 20 20">
-                                        <g fill="currentColor">
-                                            <path d="M 10 11 C 4.08 11 2 14 2 16 L 2 19 L 18 19 L 18 16 C 18 14 15.92 11 10 11 Z"/>
-                                            <circle cx="10" cy="5.5" r="4.5"/>
-                                        </g>
-                                    </svg>
+                                        class="img img-fluid square" style="width: 100px; height: 95px; object-fit: cover;" alt="..."/>
                                 </t>
                             </div>
                             <div class="oe_kanban_details ps-2 pt-2">
@@ -135,13 +132,13 @@
                                 </div>
                                 <div class="text-muted mb-1">
                                     <t t-if="record.department_id">
-                                        <i class="fa fa-building me-1 text-primary"/> 
+                                        <i class="fa fa-building me-1 text-primary" title = "building_icon" /> 
                                         <t t-esc="record.department_id.value"/>
                                     </t>
                                 </div>
                                 <div class="text-muted">
                                     <t t-if="record.reference">
-                                        <i class="fa fa-id-card me-1 text-primary"/>
+                                        <i class="fa fa-id-card me-1 text-primary" title = "id_card" />
                                         <strong>Ref:</strong> <t t-esc="record.reference.value"/>
                                     </t>
                                 </div>
@@ -150,6 +147,19 @@
                     </t>
                 </templates>
             </kanban>
+        </field>
+    </record>
+
+    <!--Organisational Chart-->
+    <record id="view_employee_selfservice_hierarchy" model="ir.ui.view">
+        <field name="name">employee.selfservice.hierarchy</field>
+        <field name="model">employee.selfservice</field>
+        <field name="arch" type="xml">
+            <hierarchy string="Org Chart" parent_field="manager_id" child_field="child_ids">
+                <field name="employee_id"/>
+                <field name="job_position"/>
+                <field name="department_id"/>
+            </hierarchy>
         </field>
     </record>
 

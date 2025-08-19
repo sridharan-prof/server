@@ -8,17 +8,13 @@ class EmployeeFeedback(models.Model):
 
     name = fields.Char(string='Title', required=True)
     feedback_type = fields.Selection([
-        ('hr', 'HR'),
-        ('tech', 'Tech'),
-        ('general', 'General')
-    ], string="Type", default="general")
+                            ('hr', 'HR'),
+                            ('tech', 'Tech'),
+                            ('general', 'General')], string="Type", default="general")
     message = fields.Text(string='Message', required=True)
     is_anonymous = fields.Boolean(string='Submit Anonymously', default=False)
-    employee_id = fields.Many2one('hr.employee', string='Submitted By')
+    employee_id = fields.Many2one('hr.employee', string='Employee Id')
     submitted_by_display = fields.Char(string='Submitted By', compute="_compute_submitted_by")
-
-    def hr_action(self):
-        self.write({'status': 'hr_review'})
 
     @api.model
     def create(self, vals):

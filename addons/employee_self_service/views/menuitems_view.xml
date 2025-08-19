@@ -4,9 +4,11 @@
     <menuitem id="menu_employee_root" name="Employee Service" sequence="1"
               web_icon="addons/employee_self_service/static/description/icon.png"/>
 
-    <!-- Self Service -->
-    <menuitem id="menu_employee_self_service" name="Self Service"
+    <!-- Service -->
+    <menuitem id="menu_employee_self_service" name="Employee Details"
               parent="menu_employee_root" action="action_employee_selfservice" sequence="1"/>
+    <menuitem id="menu_hr_department_custom" name="Departments" parent="menu_employee_root"
+              sequence="1" action="action_hr_department_custom"/>   
 
     <!-- Attendance and Leave -->
     <menuitem id="menu_employee_subroot_attendance" name="Attendance and Leave"
@@ -42,9 +44,20 @@
 
     <!-- Feedback -->
     <menuitem id="menu_employee_feedback_root" name="Feedback"
-              parent="menu_employee_root" sequence="7"/>
+            parent="menu_employee_root" sequence="7"/>
     <menuitem id="menu_employee_feedback_view" name="Give Feedback"
-              parent="menu_employee_feedback_root" action="action_employee_feedback" sequence="1"/>
+            parent="menu_employee_feedback_root" action="action_employee_feedback" sequence="1"/>
 
+    <!-- Configuration -->
+    <menuitem id = "menu_employee_configuration" name = "Configuration"
+        parent = "menu_employee_root" sequence = "100" />
+
+    <!-- Employee Tag -->
+    <menuitem id="menu_employee_tag" name="Tags" parent="menu_employee_configuration"
+        action="action_employee_tag" sequence="1"/>
+
+        <!--org chat -->
+    <menuitem id="menu_employee_org_chart" name="Org Chart"
+        parent="menu_employee_root" action="action_employee_org_chart" sequence = "10"/>
 
 </odoo>

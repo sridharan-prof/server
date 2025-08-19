@@ -1,0 +1,15 @@
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_employee_tag_tree" model="ir.ui.view">
+        <field name="name">employee.tag.tree</field>
+        <field name="model">employee.tag</field>
+        <field name="arch" type="xml">
+            <tree editable = "bottom">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

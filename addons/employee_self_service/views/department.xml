@@ -1,0 +1,85 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_department_tree_custom" model="ir.ui.view">
+        <field name="name">hr.department.tree.custom</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="replace">
+                <tree string="Departments" editable="bottom">
+                    <field name="company_id" column_invisible="True"/>
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                    <field name="manager_id" widget="many2one_avatar_user"/>
+                    <field name="total_employee" string="Employees"/>
+                    <field name="parent_id"/>
+                    <field name="color" widget="color_picker" string="Color"/>
+                </tree>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_department_kanban_custom" model="ir.ui.view">
+        <field name="name">hr.department.kanban.custom</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_hr_department_kanban o_kanban_small_column" sample="1">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="manager_id"/>
+                <field name="color"/>
+                <field name="total_employee"/>
+
+                <templates>
+                    <!-- Dropdown menu -->
+                    <t t-name="kanban-menu" t-if="!selection_mode">
+                        <div class="o_kanban_card_manage_section">
+                            <div role="menuitem" class="o_kanban_manage_reports">
+                                <div class="o_kanban_card_manage_title ps-4 pb-1">
+                                    <span class="fw-bolder">Reporting</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a t-if="widget.editable" role="menuitem" class="dropdown-item" type="edit">
+                            Configuration
+                        </a>
+                        <ul t-if="widget.editable" class="oe_kanban_colorpicker" data-field="color" role="menu"/>
+                    </t>
+
+                    <!-- Kanban Box -->
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <!-- Card Header -->
+                            <div class="o_kanban_card_header oe_kanban_details"> <!--Top bar of the header-->
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary"> <!--left side of the card-->
+                                        <a type="edit"><field name="name"/></a>
+                                    </div>
+                                    <div class="o_secondary" groups="base.group_multi_company"> <!--right of the card-->
+                                        <small>
+                                            <i class="fa fa-building-o" title="Company"/>
+                                            <field name="company_id"/>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Content -->
+                            <div class="container o_kanban_card_content" t-if="!selection_mode">
+                                <div class="row o_kanban_card_upper_content">
+                                    <div class="col-6 o_kanban_primary_left">
+                                        <button class="btn btn-primary" type="action" name="%(employee_self_service.action_employee_selfservice)d">
+                                            <t t-out="record.total_employee.raw_value"/> Employees
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

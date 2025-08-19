@@ -6,3 +6,5 @@ from . import payslip
 from . import self_appraisal
 from . import employee_ticket
 from . import employee_feedback
+from . import employee_tag
+from . import department

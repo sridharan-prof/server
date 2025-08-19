@@ -3,14 +3,16 @@ import pytz
 
 class EmployeeSelfService(models.Model):
     _name = "employee.selfservice"
-    _description = "Employee Self-Service"
-    _rec_name = "employee_id"
+    _description = "Employee Service"
+    _rec_name = "name"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     reference = fields.Char(string="Reference", default="New", tracking=True)
     employee_id = fields.Many2one('hr.employee', string='Employee', tracking=True)
+    name = fields.Char(string="Employee Name", compute="_compute_name", store=True)
     department_id = fields.Many2one('hr.department', string='Department', tracking=True)
-    image = fields.Image(string="Image", max_width=200, max_height=200)
+    skills = fields.Many2many("employee.tag")
+    image = fields.Image(string="Image", max_width=200, max_height=200, attachment = False)
     job_position = fields.Char(string="Job Position", tracking=True)
     work_mobile = fields.Char(string="Work Mobile", tracking=True)
     work_mail = fields.Char(string="E-mail", tracking=True)
@@ -18,6 +20,8 @@ class EmployeeSelfService(models.Model):
     work_location = fields.Char(string="Work Location", tracking=True)
     working_hours = fields.Char(string="Working Hours", tracking=True)
     timezone = fields.Selection(selection='_tz_get', string="Time Zone", tracking=True)
+    manager_id = fields.Many2one('employee.selfservice', string="Manager", tracking=True)
+    child_ids = fields.One2many('employee.selfservice', 'manager_id', string="Direct Reports")
 
     #personal info
     #private contact
@@ -49,3 +53,10 @@ class EmployeeSelfService(models.Model):
     def _tz_get():
         return [(tz, tz) for tz in pytz.all_timezones]
 
+    def print_report(self):
+        return self.env.ref('employee_self_service.action_employee_report').report_action(self)
+        
+    @api.depends('employee_id')
+    def _compute_name(self):
+        for rec in self:
+            rec.name = rec.employee_id.name if rec.employee_id else "Unknown"
