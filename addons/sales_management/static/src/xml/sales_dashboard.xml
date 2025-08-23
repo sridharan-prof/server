@@ -1,0 +1,66 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="sales_management.SalesDashboard">
+        <div class="o_sales_dashboard p-3">
+            <h2>Sales Dashboard</h2>
+
+            <div class="row mb-3">
+                <div class="col card p-3 m-2 shadow-sm">
+                    <h4>Total Orders</h4>
+                    <span t-esc="state.totalOrders"/>
+                </div>
+                <div class="col card p-3 m-2 shadow-sm">
+                    <h4>Total Revenue</h4>
+                    <div>₹ <span t-esc="state.totalRevenue"/></div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+                <div class="input-group" style="max-width: 300px;">
+                    <span class="input-group-text">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" 
+                           placeholder="Search orders..." t-on-input="onSearch"/>
+                </div>
+            </div>
+
+            <h4>Recent Orders</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="paginatedOrders" t-as="o" t-key="o.id">
+                        <tr>
+                            <td><t t-esc="o.name"/></td>
+                            <td><t t-esc="o.customer_name"/></td>
+                            <td><t t-esc="o.order_date"/></td>
+                            <td><t t-esc="o.amount_total"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-outline-primary"
+                        t-on-click="goToPreviousPage"
+                        t-att-disabled="state.currentPage === 1">
+                    Previous
+                </button>
+
+                <span>Page <t t-esc="state.currentPage"/> of <t t-esc="pageCount"/></span>
+
+                <button class="btn btn-outline-primary"
+                        t-on-click="goToNextPage"
+                        t-att-disabled="state.currentPage === pageCount">
+                    Next
+                </button>
+            </div>
+        </div>
+    </t>
+</templates>

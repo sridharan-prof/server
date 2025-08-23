@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_supermarket_product_tree" model="ir.ui.view">
+        <field name="name">supermarket.product.tree</field>
+        <field name="model">supermarket.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name = "name" />
+                <field name = "price" />
+                <field name = "inventory_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_supermarket_product_form" model="ir.ui.view">
+        <field name="name">supermarket.product.form</field>
+        <field name="model">supermarket.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="price" />
+                        <field name="stock_qty" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

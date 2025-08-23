@@ -1,0 +1,17 @@
+<odoo>
+    <menuitem id="menu_sales_management_root" name="Sales Management" sequence="-2"/>
+
+    <menuitem id="menu_sales_orders" name="Sales Orders"
+              parent="menu_sales_management_root" action="action_sales_order"/>
+        
+    <menuitem id="menu_sales_inventory" name="Sales Inventory" 
+        parent="menu_sales_management_root" action="action_sales_inventory"/>
+
+    <record id="action_sales_dashboard" model="ir.actions.client">
+        <field name="name">Sales Dashboard</field>
+        <field name="tag">sales_dashboard_action</field>
+    </record>
+
+    <menuitem id="menu_sales_dashboard" name="Dashboard"
+              parent="menu_sales_management_root" action="action_sales_dashboard"/>
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+
+    <!--Product Actions -->
+    <record id="action_products" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">supermarket.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('inventory_id.max_stock', '>', 0)]</field>
+    </record>
+
+    <!--Inventory Actions -->
+    <record id="action_inventory" model="ir.actions.act_window">
+        <field name="name">Inventory</field>
+        <field name="res_model">supermarket.inventory</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

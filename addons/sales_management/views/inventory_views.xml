@@ -1,0 +1,44 @@
+<odoo>
+
+    <!-- Inventory Tree -->
+    <record id="view_sales_inventory_tree" model="ir.ui.view">
+        <field name="name">sales.inventory.tree</field>
+        <field name="model">sales.inventory</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Inventory">
+                <field name="product_id" />
+                <field name="cost_price"/>
+                <field name="maximum_stock"/>
+                <field name="reorder_level"/>
+                <field name="expiry_date"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Inventory Form -->
+    <record id="view_sales_inventory_form" model="ir.ui.view">
+        <field name="name">sales.inventory.form</field>
+        <field name="model">sales.inventory</field>
+        <field name="arch" type="xml">
+            <form string="Inventory">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="cost_price"/>
+                        <field name="maximum_stock"/>
+                        <field name="reorder_level"/>
+                        <field name="expiry_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Inventory Action -->
+    <record id="action_sales_inventory" model="ir.actions.act_window">
+        <field name="name">Sales Inventory</field>
+        <field name="res_model">sales.inventory</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
